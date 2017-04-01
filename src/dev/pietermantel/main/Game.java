@@ -45,7 +45,7 @@ public class Game implements Runnable{
 			if(delta >= 1) {
 				tick();
 				delta--;
-				ticks++;
+				ticks++; 
 			}
 			if(timer >= 1000000000) {
 				System.out.println("FPS: " + ticks);
