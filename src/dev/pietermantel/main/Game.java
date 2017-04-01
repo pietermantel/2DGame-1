@@ -2,8 +2,10 @@ package dev.pietermantel.main;
 
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 
 import dev.pietermantel.main.display.Display;
+import dev.pietermantel.main.imgloader.ImageLoader;
 import dev.pietermantel.tools.DT;
 
 //@SuppressWarnings("unused")
@@ -61,7 +63,8 @@ public class Game implements Runnable{
 		}
 		Graphics g = bs.getDrawGraphics();
 		//Draw
-		g.fillRect(0, 0, (int) DT.getPix(600), (int) DT.getPix(337));
+		g.fillRect(0, 0, frameWidth, frameHeight);
+		
 		//===
 		g.dispose();
 		bs.show();

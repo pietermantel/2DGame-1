@@ -16,7 +16,7 @@ public class DT {
 		} else {
 			pixWidth = height * ratio / intWidth;
 		}
-		System.out.println(b);
+		//System.out.println(b);
 	}
 	
 	public static double getPix(int pix) {
