@@ -112,8 +112,8 @@ public class Game implements Runnable{
 		display = new Display(title, frameWidth, frameHeight);
 		Assets.init();
 		
-		gameState = new GameState();
-		menuState = new MenuState();
+		gameState = new GameState(this);
+		menuState = new MenuState(this);
 		State.setState(gameState);
 	}
 }
