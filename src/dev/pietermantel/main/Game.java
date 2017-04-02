@@ -3,6 +3,8 @@ package dev.pietermantel.main;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
+import javax.swing.JFrame;
+
 import dev.pietermantel.main.display.Display;
 import dev.pietermantel.main.imgloader.Assets;
 import dev.pietermantel.main.states.GameState;
@@ -11,7 +13,7 @@ import dev.pietermantel.main.states.State;
 
 @SuppressWarnings("unused")
 public class Game implements Runnable{
-	public int frameWidth, frameHeight;
+	public static int frameWidth, frameHeight;
 	public String title;
 	public boolean running = false;
 	private Thread thread;
@@ -87,6 +89,7 @@ public class Game implements Runnable{
 		Graphics g = bs.getDrawGraphics();
 		//Draw
 		//g.fillRect(0, 0, frameWidth, frameHeight);
+		g.clearRect(0, 0, frameWidth, frameHeight);
 		
 		if(State.getState() != null) {
 			State.getState().render(g);
@@ -110,10 +113,15 @@ public class Game implements Runnable{
 	
 	private void init() {
 		display = new Display(title, frameWidth, frameHeight);
+		
 		Assets.init();
 		
-		gameState = new GameState();
-		menuState = new MenuState();
+		gameState = new GameState(this);
+		menuState = new MenuState(this);
 		State.setState(gameState);
+	}
+	
+	public Display getDisplay() {
+		return display;
 	}
 }
