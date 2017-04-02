@@ -15,9 +15,6 @@ public class GameState extends State {
 	}
 	
 	public void render(Graphics g) {
-		g.drawImage(Assets.dirt, 0,0,null);
-		g.drawImage(Assets.grass, 32,0,null);
-		g.drawImage(Assets.dirt, 0,32,null);
-		g.drawImage(Assets.dirt, 32,32,null);
+		g.drawImage(Assets.player_right, 0, 0, null);
 	}
 }

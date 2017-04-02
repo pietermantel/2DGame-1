@@ -6,9 +6,10 @@ import java.awt.image.BufferStrategy;
 import dev.pietermantel.main.display.Display;
 import dev.pietermantel.main.imgloader.Assets;
 import dev.pietermantel.main.states.GameState;
+import dev.pietermantel.main.states.MenuState;
 import dev.pietermantel.main.states.State;
 
-//@SuppressWarnings("unused")
+@SuppressWarnings("unused")
 public class Game implements Runnable{
 	public int frameWidth, frameHeight;
 	public String title;
@@ -104,6 +105,7 @@ public class Game implements Runnable{
 	
 	//states
 	private State gameState;
+	private State menuState;
 	//===
 	
 	private void init() {
@@ -111,6 +113,7 @@ public class Game implements Runnable{
 		Assets.init();
 		
 		gameState = new GameState();
+		menuState = new MenuState();
 		State.setState(gameState);
 	}
 }
