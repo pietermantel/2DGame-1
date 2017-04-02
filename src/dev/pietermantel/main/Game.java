@@ -5,6 +5,8 @@ import java.awt.image.BufferStrategy;
 
 import dev.pietermantel.main.display.Display;
 import dev.pietermantel.main.imgloader.Assets;
+import dev.pietermantel.main.states.GameState;
+import dev.pietermantel.main.states.State;
 
 //@SuppressWarnings("unused")
 public class Game implements Runnable{
@@ -84,7 +86,10 @@ public class Game implements Runnable{
 		Graphics g = bs.getDrawGraphics();
 		//Draw
 		//g.fillRect(0, 0, frameWidth, frameHeight);
-		g.drawImage(Assets.grass, 54, 67, null);
+		
+		if(State.getState() != null) {
+			State.getState().render(g);
+		}
 		
 		//===
 		g.dispose();
@@ -92,11 +97,20 @@ public class Game implements Runnable{
 	}
 	
 	private void tick() {
-		
+		if(State.getState() != null) {
+			State.getState().tick();
+		}
 	}
+	
+	//states
+	private State gameState;
+	//===
 	
 	private void init() {
 		display = new Display(title, frameWidth, frameHeight);
 		Assets.init();
+		
+		gameState = new GameState();
+		State.setState(gameState);
 	}
 }
