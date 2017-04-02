@@ -6,13 +6,18 @@ import java.awt.image.BufferedImage;
 public class TextureComponent {
 	private BufferedImage texture;
 	private float x,y;
+	private int width, height;
 	
-	public TextureComponent(BufferedImage texture, float x, float y) {
+	public TextureComponent(BufferedImage texture, float x, float y, int width, int height) {
 		this.texture = texture;
+		this.x = x;
+		this.y = y;
+		this.width = width;
+		this.height = height;
 	}
 	
 	public void render(Graphics g) {
-		g.drawImage(texture, (int)x, (int)y, null);
+		g.drawImage(texture, (int)x, (int)y, width, height, null);
 	}
 
 	public BufferedImage getTexture() {
@@ -37,6 +42,22 @@ public class TextureComponent {
 
 	public void setY(float y) {
 		this.y = y;
+	}
+
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
 	}
 	
 	
